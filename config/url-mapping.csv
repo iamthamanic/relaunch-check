@@ -1,0 +1,3 @@
+old_url,new_url,expected_status
+# Add one row per changed legacy URL before the final redirect gate.
+# https://halteverbot123.de/alte-seite.html,https://halteverbot123.de/neue-seite/,301
