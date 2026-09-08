@@ -1,0 +1,88 @@
+[
+  {
+    "phase": "Baseline",
+    "title": "Alte Website inventarisieren",
+    "description": "Speichert den technischen Zustand der aktuellen Website als Referenz für den Vergleich nach dem Relaunch.",
+    "checks": [
+      {"id":"BASE-001","name":"Kritische URLs erfassen","automation":"core","status":"ready"},
+      {"id":"BASE-002","name":"SEO-Metadaten erfassen","automation":"core","status":"ready"},
+      {"id":"BASE-003","name":"Vollständigen Crawl archivieren","automation":"screaming-frog","status":"external"}
+    ]
+  },
+  {
+    "phase": "Staging",
+    "title": "Neue Website vor dem Switch prüfen",
+    "description": "Prüft Erreichbarkeit und Produktionsreife von storyblok.halteverbot123.de, ohne den echten Domain-Switch auszuführen.",
+    "checks": [
+      {"id":"STG-001","name":"Staging erreichbar","automation":"core","status":"ready"},
+      {"id":"STG-002","name":"Canonical-Ziel plausibel","automation":"core","status":"ready"},
+      {"id":"STG-003","name":"Draft/Published-Trennung","automation":"storyblok/manual","status":"planned"}
+    ]
+  },
+  {
+    "phase": "SEO & URLs",
+    "title": "Indexierung und URL-Migration absichern",
+    "description": "Findet noindex, falsche Canonicals, blockierende robots.txt-Regeln, Sitemap-Probleme und fehlerhafte Redirects.",
+    "checks": [
+      {"id":"SEO-001","name":"HTTP-Status kritischer Seiten","automation":"core","status":"ready"},
+      {"id":"SEO-002","name":"Title, H1, Canonical, Robots","automation":"core","status":"ready"},
+      {"id":"SEO-003","name":"robots.txt","automation":"core","status":"ready"},
+      {"id":"SEO-004","name":"Sitemap erreichbar","automation":"core","status":"ready"},
+      {"id":"SEO-005","name":"Redirect-Mapping","automation":"core","status":"ready"},
+      {"id":"SEO-006","name":"Vollständiger Crawlvergleich Alt vs. Neu","automation":"screaming-frog","status":"external"}
+    ]
+  },
+  {
+    "phase": "Formulare & ERP",
+    "title": "Geschäftsprozesse End-to-End testen",
+    "description": "Stellt sicher, dass echte Nutzerwege nicht nur im Browser, sondern bis ins ERP korrekt funktionieren.",
+    "checks": [
+      {"id":"E2E-001","name":"HVZ-Bestellung","automation":"playwright+erp","status":"external"},
+      {"id":"E2E-002","name":"Verkehrssicherungs-Anfrage","automation":"playwright+erp","status":"external"},
+      {"id":"E2E-003","name":"Verkehrszeichenplan-Anfrage","automation":"playwright+erp","status":"external"},
+      {"id":"E2E-004","name":"Doppeltes Absenden verhindern","automation":"playwright+erp","status":"external"},
+      {"id":"E2E-005","name":"API-Ausfall korrekt behandeln","automation":"playwright","status":"external"}
+    ]
+  },
+  {
+    "phase": "Tracking & Consent",
+    "title": "Messung und Einwilligung validieren",
+    "description": "Prüft, ob Events exakt einmal und nur unter den vorgesehenen Consent-Zuständen ausgelöst werden.",
+    "checks": [
+      {"id":"TRK-001","name":"Consent vor Zustimmung","automation":"playwright","status":"external"},
+      {"id":"TRK-002","name":"GA4/GTM Events","automation":"playwright","status":"external"},
+      {"id":"TRK-003","name":"purchase nicht doppelt","automation":"playwright","status":"external"}
+    ]
+  },
+  {
+    "phase": "Qualität",
+    "title": "Browser, Accessibility und Performance",
+    "description": "Deckt Darstellungs-, Bedienungs- und Performance-Regressionen auf.",
+    "checks": [
+      {"id":"QLT-001","name":"Browser-Matrix","automation":"playwright","status":"external"},
+      {"id":"QLT-002","name":"Accessibility","automation":"axe","status":"external"},
+      {"id":"QLT-003","name":"Performance Budget","automation":"lighthouse","status":"external"}
+    ]
+  },
+  {
+    "phase": "Security",
+    "title": "Passive Sicherheitschecks",
+    "description": "Prüft Transport, Header und passive Web-Sicherheitsprobleme ohne aggressive Angriffe gegen Production.",
+    "checks": [
+      {"id":"SEC-001","name":"HTTPS und Redirect","automation":"core","status":"ready"},
+      {"id":"SEC-002","name":"Security Header","automation":"core","status":"ready"},
+      {"id":"SEC-003","name":"OWASP ZAP Baseline","automation":"zap","status":"external"},
+      {"id":"SEC-004","name":"TLS Detailprüfung","automation":"testssl","status":"external"}
+    ]
+  },
+  {
+    "phase": "Post-Launch",
+    "title": "Direkt nach dem Domain-Switch absichern",
+    "description": "Wiederholt die kritischen Checks auf halteverbot123.de und macht Produktionsfehler sofort sichtbar.",
+    "checks": [
+      {"id":"POST-001","name":"Production Smoke Test","automation":"core","status":"ready"},
+      {"id":"POST-002","name":"Keine Staging-Leaks","automation":"core","status":"ready"},
+      {"id":"POST-003","name":"Search Console Monitoring","automation":"gsc","status":"external"}
+    ]
+  }
+]
