@@ -1,6 +1,6 @@
 # Relaunch Check
 
-Deterministische Pre-Launch- und Post-Launch-Prüfungen für den Relaunch von `halteverbot123.de` auf die neue Storyblok-Website.
+Deterministische Pre-Launch- und Post-Launch-Prüfungen für den Relaunch von produktiven Websites auf die neue Storyblok-Website.
 
 ## Ziel
 
