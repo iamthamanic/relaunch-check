@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Relaunch Check</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt</a>
+  <header class="topbar">
+    <div class="brand-block">
+      <div class="brand-mark" aria-hidden="true"><span></span><span></span></div>
+      <div>
+        <p class="eyebrow">Halteverbot123</p>
+        <h1>Relaunch Check</h1>
+      </div>
+    </div>
+    <div class="environment-pill"><span class="dot"></span> Lokal · kein öffentlicher Admin</div>
+  </header>
+
+  <main id="main" class="shell">
+    <section class="gate" aria-labelledby="gate-title">
+      <div class="gate-copy">
+        <p class="section-label">Release gate</p>
+        <h2 id="gate-title">Ein klarer Weg von „testen“ zu „live“.</h2>
+        <p class="lead">Starte die passende Prüfung. Das Dashboard zeigt sofort, was bestanden ist, was blockiert und welche Checks noch externe Tools brauchen.</p>
+        <div class="actions" aria-label="Relaunch-Prüfungen starten">
+          <button class="btn btn-primary" data-run="pre">Pre-Launch prüfen</button>
+          <button class="btn btn-secondary" data-run="baseline">Baseline erfassen</button>
+          <button class="btn btn-secondary" data-run="post">Post-Launch prüfen</button>
+        </div>
+      </div>
+      <div class="signal-panel" aria-live="polite">
+        <div class="signal" id="signal" data-state="idle" aria-hidden="true">
+          <span class="signal-light red"></span>
+          <span class="signal-light amber"></span>
+          <span class="signal-light green"></span>
+        </div>
+        <div>
+          <p class="signal-label" id="run-status">Bereit</p>
+          <p class="signal-detail" id="run-detail">Noch keine Prüfung gestartet.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Übersicht">
+      <article><strong id="metric-checks">—</strong><span>Checks geplant</span></article>
+      <article><strong id="metric-ready">—</strong><span>direkt ausführbar</span></article>
+      <article><strong id="metric-external">—</strong><span>brauchen Tool/Zugriff</span></article>
+    </section>
+
+    <section class="run-card" aria-labelledby="run-title">
+      <div class="run-head">
+        <div>
+          <p class="section-label">Aktueller Lauf</p>
+          <h2 id="run-title">Prüfergebnis</h2>
+        </div>
+        <span class="status-chip" id="status-chip">Nicht gestartet</span>
+      </div>
+      <div class="progress-track" aria-hidden="true"><span id="progress-bar"></span></div>
+      <div class="result-grid" id="result-grid">
+        <div><span>PASS</span><strong id="count-pass">0</strong></div>
+        <div><span>WARN</span><strong id="count-warn">0</strong></div>
+        <div><span>FAIL</span><strong id="count-fail">0</strong></div>
+      </div>
+      <div class="results" id="results" aria-live="polite">
+        <p class="empty">Starte oben eine Prüfung. Ergebnisse erscheinen hier ohne Terminal-Ausgabe.</p>
+      </div>
+      <details class="logs">
+        <summary>Technische Details anzeigen</summary>
+        <pre id="log-output">Noch keine Logs.</pre>
+      </details>
+    </section>
+
+    <section class="phases" aria-labelledby="phases-title">
+      <div class="section-head">
+        <div>
+          <p class="section-label">Prüfplan</p>
+          <h2 id="phases-title">Phasen und Abhängigkeiten</h2>
+        </div>
+        <p>„Direkt“ läuft im Repo. „Extern“ braucht ein zusätzliches Tool oder einen Zugang.</p>
+      </div>
+      <div id="phase-list" class="phase-list"></div>
+    </section>
+
+    <section class="integrations" aria-labelledby="integrations-title">
+      <div class="section-head">
+        <div>
+          <p class="section-label">Noch anzubinden</p>
+          <h2 id="integrations-title">Externe Prüfer</h2>
+        </div>
+      </div>
+      <div class="integration-grid">
+        <article><span class="tool-tag">Browser</span><h3>Playwright</h3><p>Formulare, Rechner, Consent, Tracking und Browser-Matrix.</p><strong>Benötigt: Installation + Testdaten</strong></article>
+        <article><span class="tool-tag">ERP</span><h3>ERP API</h3><p>Vergleicht Website-Eingaben deterministisch mit dem erzeugten ERP-Vorgang.</p><strong>Benötigt: API-Endpunkt + Test-Token</strong></article>
+        <article><span class="tool-tag">SEO</span><h3>Screaming Frog</h3><p>Vollständiger Alt-/Neu-Crawl über tausende URLs und Export der technischen SEO-Daten.</p><strong>Benötigt: Lizenz bei &gt;500 URLs</strong></article>
+        <article><span class="tool-tag">Performance</span><h3>Lighthouse CI</h3><p>Messbare Budgets für LCP, CLS, Accessibility und Performance-Regressionen.</p><strong>Benötigt: npm-Paket</strong></article>
+        <article><span class="tool-tag">Security</span><h3>OWASP ZAP + testssl</h3><p>Passive Web-Sicherheitsprüfung und TLS-Detailcheck.</p><strong>Benötigt: Docker/CLI</strong></article>
+        <article><span class="tool-tag">Google</span><h3>Search Console API</h3><p>Beobachtet nach dem Switch Sitemaps, Google-Canonical und Indexverarbeitung.</p><strong>Benötigt: Google Cloud Zugang</strong></article>
+      </div>
+    </section>
+  </main>
+
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
