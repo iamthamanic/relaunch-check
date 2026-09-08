@@ -1,0 +1,17 @@
+{
+  "name": "relaunch-check",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Deterministic pre-launch and post-launch checks for halteverbot123.de",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dashboard": "node server.mjs",
+    "relaunch:baseline": "node scripts/runner.mjs baseline",
+    "relaunch:pre": "node scripts/runner.mjs pre",
+    "relaunch:post": "node scripts/runner.mjs post",
+    "test": "node --test"
+  }
+}
