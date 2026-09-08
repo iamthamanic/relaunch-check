@@ -1,0 +1,28 @@
+{
+  "projectName": "Halteverbot123 Relaunch",
+  "productionBaseUrl": "https://halteverbot123.de",
+  "stagingBaseUrl": "https://storyblok.halteverbot123.de",
+  "criticalPaths": [
+    "/",
+    "/verkehrssicherung/",
+    "/verkehrszeichenplan/"
+  ],
+  "sitemapPaths": [
+    "/sitemap.xml",
+    "/sitemap-index.xml"
+  ],
+  "productionRules": {
+    "forbidNoindex": true,
+    "forbidGlobalRobotsBlock": true,
+    "forbiddenHtmlTerms": [
+      "storyblok.halteverbot123.de",
+      "localhost",
+      "127.0.0.1",
+      "TEST-STORYBLOK"
+    ]
+  },
+  "stagingRules": {
+    "allowNoindex": true,
+    "expectedCanonicalHost": "halteverbot123.de"
+  }
+}
